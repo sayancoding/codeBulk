@@ -1,44 +1,49 @@
-// package simpleTree;
-class Node{
+class Node
+{
   int key;
   Node left,right;
-  Node(int key)
-  {
-    this.key = key;
-    left = right = null;
-  }
 }
 
-//  class BinaryTree {
-//    Node root;
-//    BinaryTree(int key){
-//    root = new Node(key);
-//    }
-//    BinaryTree(){
-//    root = null;
-//    }
-//   public static void main(String[] args) {
-//     BinaryTree tree = new BinaryTree();
-//     tree.root = new Node(12);
-//     tree.root.left = new Node(10);
-//     tree.root.right = new Node(18);
-
-//     System.out.println(tree.root.key);
-//     System.out.println(tree.root.left.key);
-//     System.out.println(tree.root.right.key);
-//   }
-// }
-class BST{
-  public Node insert(Node nd,int val)
+class BST
+{
+  public Node createNewNode(int value)
   {
+    Node node = new Node();
+    node.key = value;
+    node.left = node.right = null;
+    return node;
+  }
 
+  public Node insetNode(Node nd,int value)
+  {
+    if(nd == null)
+    {
+      return createNewNode(value);
+    }
+    if(nd.key>value)
+    {
+      nd.left = insetNode(nd.left,value);
+    }
+    else if(nd.key<value)
+    {
+      nd.right = insetNode(nd.right, value);
+    }
     return nd;
   }
 }
 
-class Main{
+class Main
+{
   public static void main(String[] args) {
+    Node root = new Node();
     BST a = new BST();
-    Node root = null;
+    root = null;
+    root = a.insetNode(root, 5);
+    root = a.insetNode(root, 3);
+    root = a.insetNode(root, 10);
+    root = a.insetNode(root, 4);
+    root = a.insetNode(root, 8);
+    root = a.insetNode(root, 12);
+    System.out.println(root.left.key);
   }
 }
