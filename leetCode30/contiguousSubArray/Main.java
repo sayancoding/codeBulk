@@ -9,18 +9,18 @@ class Main{
     
       int sum = 0,maxCount=0,count=0;
 
-    for(int i = 0;i<givenList.size();i++)
+    for(int i = 0;i<givenList.size();i++){
+      if(givenList.get(i)==1)
+      sum = 1;
+      else if(givenList.get(i) == 0)
+      sum = -1;
       for(int j = i+1;j<givenList.size();j++){
-        if(givenList.get(i)==1)
-        sum = 1;
-        else if(givenList.get(i) == 0)
-        sum = -1;
 
         //inner loop
         if(givenList.get(j)==1)
-        sum +=1;
+          ++sum;
         else if(givenList.get(j)==0)
-        sum -= 1;
+          --sum;
 
         //contiguous checked
         if(sum == 0)
@@ -29,15 +29,15 @@ class Main{
           if(count>maxCount)
           {
             maxCount = count;
-            break;
           }
         }
       }
-
+    }
       return maxCount;
   }
   public static void main(String[] args) {
-    int givenArr[] = new int[] {1,1,1,0,0,1,1}; 
+    int givenArr[] = new int[] {0,1,1};
+     
     System.out.println(contiguousArray(givenArr));
   }
 }
