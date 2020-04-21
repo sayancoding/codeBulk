@@ -39,6 +39,12 @@ class Main{
   public static int contiguousArray(int arr[]) {
     int sum = 0;
     int maxLen = -1;
+    for(int i = 0;i<arr.length;i++)
+    {
+      if(arr[i] == 0)
+      arr[i] = -1;
+    }
+    //operation
     HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
     for(int i = 0;i<arr.length;i++)
     {
@@ -46,17 +52,21 @@ class Main{
       if(!map.containsKey(sum))
       {
         map.put(sum, i);
+
         maxLen = Math.max(maxLen, i);
       }
-      else{
-        map.put(sum, i-map.get(i));
-        maxLen = Math.max(maxLen, (i - map.get(i)));
+      else if(map.containsKey(sum)){
+        map.put(sum, (i-map.get(sum)+1));
+        maxLen = Math.max(maxLen, (i - map.get(sum)+1));
       }   
     }
+    if(maxLen == 1)
+    maxLen+=1;
+
     return maxLen;
   }
   public static void main(String[] args) {
-    int givenArr[] = new int[] {0,1,1};
+    int givenArr[] = new int[] {0,1,0,1};
      
     System.out.println(contiguousArray(givenArr));
   }
