@@ -1,4 +1,5 @@
-class LinkedList{
+
+ class LinkedList{
   static class Node {
     int data;
     Node next;
