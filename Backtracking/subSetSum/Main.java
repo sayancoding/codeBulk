@@ -15,7 +15,6 @@ class Main{
       System.out.println(result);
       return;
     }
-    // System.out.println(result+" -> "+ sum(result));
     result.add(arr[i]);
     subSetSum(arr, sum, i+1,result);
     result.remove(result.size()-1);
